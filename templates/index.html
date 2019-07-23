@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Solo Project</title>
+</head>
+<body>
+    
+    <h1>Add a City</h1>
+
+    <form action="add_city" method="POST">
+        <div>
+            <div class="column one-half">
+                <label for="city_name">City</label>
+                <input type="text" name="city_name">
+            </div>
+        </div>
+        <input type="submit" value="Add">
+    </form> 
+
+
+
+<h1>Weather in the Cities</h1>
+    <table class="column">
+        <tr>
+            <th>City</th>
+            <th>Temperature</th>
+            <th>Icon</th>
+            <th>Description</th>
+            <th>Action</th>            
+        </tr>           
+        <tbody>
+        {% for weather in weather_data %}
+        <tr>
+            <td>{{ weather.city }}</td>
+            <td>{{ weather.temperature }} F</td>
+            <td> <img src="http://openweathermap.org/img/w/{{ weather.icon }}.png" alt="Image"></td>
+            <td>{{ weather.description }}</td>
+            <td><a href="/delete_city/{{ weather.id }}">Delete</a></td>
+            {% endfor %}
+        </tr>
+       
+        </tbody>
+    </table>
+</body>
+</html>
